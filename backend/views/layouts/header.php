@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -265,5 +264,4 @@ use yii\helpers\Url;
         </ul>
       </div>
     </nav>
-  </header>
   <!-- Left side column. contains the logo and sidebar -->

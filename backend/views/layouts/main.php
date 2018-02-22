@@ -26,13 +26,26 @@ DashboardAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrapper">
-    <?php require_once("header.php"); ?>
-    <?php require_once("navbar.php"); ?>
+    <header class="main-header">
+        <?php require_once("header.php"); ?>
+    </header>
+    <aside class="main-sidebar">
+        <?php require_once("navbar.php"); ?>
+    </aside>
 
     <div class="content-wrapper">
         <section class="content-header">
+        <h1>
+            OldmanCode
+            <small>Not too old for code</small>
+        </h1>
             <?= Breadcrumbs::widget([
+                'homeLink' => [ 
+                    'label' => Yii::t('yii', 'Dashboard'),
+                    'url' => Yii::$app->homeUrl,
+                ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'options' => ['class' => 'breadcrumb']
             ]) ?>
             <?= Alert::widget() ?>
         </section>
