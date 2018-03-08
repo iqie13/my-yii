@@ -1,9 +1,15 @@
-<?php 
-$this->title = 'People';
-// $this->params['breadcrumbs'][] = ['label' => 'Employees', 'url' => ['index']];
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\PeopleSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Peoples';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
@@ -12,18 +18,33 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-                <div class="People-default-index">
-                    <h1><?= $this->context->action->uniqueId ?></h1>
-                    <p>
-                        This is the view content for action "<?= $this->context->action->id ?>".
-                        The action belongs to the controller "<?= get_class($this->context) ?>"
-                        in the "<?= $this->context->module->id ?>" module.
-                    </p>
-                    <p>
-                        You may customize this page by editing the following file:<br>
-                        <code><?= __FILE__ ?></code>
-                    </p>
-                </div>
+            <div class="people-index">
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+                <p>
+                    <?= Html::a('Create People', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+
+                        'people_id',
+                        'people_name',
+                        'job_title_id',
+                        'email:email',
+                        'join_date',
+                        //'status_id',
+                        //'create_date',
+                        //'create_id',
+                        //'update_date',
+                        //'update_id',
+
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
             </div>
         </div>
     </div>
