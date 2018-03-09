@@ -23,6 +23,7 @@ class People extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'm_people';
@@ -49,8 +50,8 @@ class People extends \yii\db\ActiveRecord
     {
         return [
             'people_id' => 'People ID',
-            'people_name' => 'People Name',
-            'job_title_id' => 'Job Title ID',
+            'people_name' => 'Fullname',
+            'job_title_id' => 'Job Title',
             'email' => 'Email',
             'join_date' => 'Join Date',
             'status_id' => 'Status ID',

@@ -61,6 +61,8 @@ class LoginForm extends Model
         if ($this->validate()) {
             $avatar = Avatar::find('WHERE status_id = 1 AND user_id = '. $this->getUser()->id)->one();
             $session = Yii::$app->session;
+            $session->set('user_id', $this->getUser()->id);
+            $session->set('people_id', $this->getUser()->people_id);
             $session->set('fullname', $this->getUser()->full_name);
             $session->set('join_date', date('M Y', strtotime($this->getUser()->created_at)));
             $session->set('ava_url', $avatar->ava_url);

@@ -9,6 +9,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use backend\models\JobTitle;
+use common\models\User;
+use yii\web\UploadedFile;
 
 /**
  * DefaultController implements the CRUD actions for People model.
@@ -76,13 +80,22 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $model = new People();
+        $user = new User();
+        $jobTitle = ArrayHelper::map(JobTitle::find()->all(), 'job_title_id', 'job_title_name');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->create_id = Yii::$app->session->get('user_id');
+            $model->create_date = date('Y-m-d');
+            if($model->save()) {
+                $user->load(Yii::$app->request->post());
+            }
             return $this->redirect(['view', 'id' => $model->people_id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'jobTitle' => $jobTitle,
+            'user' => $user,
         ]);
     }
 

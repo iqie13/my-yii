@@ -30,6 +30,8 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    public $photo;
+
     public static function tableName()
     {
         return '{{%user}}';
@@ -53,6 +55,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username'], 'unique', 'targetAttribute' => ['username'], 'message' => 'Username already use'],
+            [['photo'], 'file'],
         ];
     }
 
