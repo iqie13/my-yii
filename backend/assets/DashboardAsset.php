@@ -20,7 +20,7 @@ class DashboardAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'bower_components/jquery/dist/jquery.min.js',
+        // 'bower_components/jquery/dist/jquery.min.js',
         'bower_components/jquery-ui/jquery-ui.min.js',
         'bower_components/bootstrap/dist/js/bootstrap.min.js',
         'dist/js/adminlte.min.js',
